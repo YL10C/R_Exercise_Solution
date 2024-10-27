@@ -1,6 +1,6 @@
 ## The huge speed up is because we have avoided all those multiplications
 ## by zero that contribute nothing anyway.
-
+# nolint start
 ## 5.2
 ## 1
 set.seed(5)
@@ -78,6 +78,13 @@ system.time(
   A <- matrix(rep(rep(1:0, p), rep(c(0, p), p) + rep(1:p, each = 2) * rep(c(1, -1), p)), p, p)
 )
 
+
+i <- rep(p, 2 * p)
+
+i[seq(1, 2 * p, by = 2)] <- 1:p
+i[seq(2, 2 * p, by = 2)] <- (p - 1):0
+A <- matrix(rep(rep(1:0, p), i), p, p)
+
 ## 5
 p <- 5
 B <- matrix(1:(p * p), p, p)
@@ -112,3 +119,5 @@ root <- function(xr, f, ...) {
 
 root(c(.1, 10), f)
 root(c(0, 10), g, a = 1, b = 2)
+
+# nolint end

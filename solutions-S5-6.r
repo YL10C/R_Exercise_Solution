@@ -1,5 +1,7 @@
 ## 5.9.1 following looks long, but only 3 lines are modified from notes
 
+# nolint start
+
 ecdf3 <- function(x, h = .1) {
   ## function to plot empirical cdf of sample x, smoothed with
   ## bandwidth h
@@ -79,3 +81,5 @@ p.hat <- x / n ## compute the estimate of p
 sig.p <- sqrt(p.hat * (1 - p.hat) / n) ## and its standard error
 cp <- mean(p.hat - 1.96 * sig.p < p & p.hat + 1.96 * sig.p > p)
 cp ## observed coverage probability
+
+# nolint end

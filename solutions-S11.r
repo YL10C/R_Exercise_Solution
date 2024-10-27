@@ -1,4 +1,5 @@
 ## 11.3 inverse of R...
+# nolint start
 n <- 5
 R <- qr.R(qr(matrix(runif(n * n), n, n))) ## get an R
 Ri <- backsolve(R, diag(ncol(R))) ## solve R %*% Ri = I
@@ -29,7 +30,7 @@ determinant(A) ## fine
 X <- sweep(as.matrix(iris[, 1:4]), 2, colMeans(iris[, 1:4])) ## column centred data matrix
 V <- t(X) %*% X / (nrow(X) - 1) ## estimated covariance matrix
 sd <- diag(V)^.5 ## standard deviation
-C <- t(t(V / sd) / sd) ## form C=diag(1/sd)%*%V%*$diag(1/sd) efficiently
+C <- t(t(V / sd) / sd) ## form C = diag(1/sd) %*% V %*% diag(1/sd) efficiently
 ## Actually cor(iris[,1:4]) does the same!!
 ec <- eigen(C) ## eigen decompose the correlation matrix
 U <- ec$vectors
@@ -49,3 +50,5 @@ sx <- svd(X)
 beta.hat <- sx$v %*% ((t(sx$u) %*% PlantGrowth$weight) / sx$d)
 beta.hat
 coef(lm(weight ~ group, PlantGrowth))
+
+# nolint end

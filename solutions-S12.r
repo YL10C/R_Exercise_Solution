@@ -1,6 +1,6 @@
 ## Section 12.2 ridge regression, basically after debugging and profiling
 ## as in debugging lecture...
-
+# nolint start
 fit.ridge <- function(y, X, XX, sp) {
   ## fits model y = X b + e by ridge regression, with penalty parameter sp
   ## and computes GCV score.
@@ -55,3 +55,5 @@ if (inherits(B, "try-error")) { ## failed
   if (grep("matrix not symmetric", as.character(attr(B, "condition"))) == 1) OK <- TRUE
 }
 if (!OK) warning("non-symmetric matrix error handling failure")
+
+# nolint end
